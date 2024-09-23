@@ -16,7 +16,7 @@ This repository is organized as follows:
   - `IMS Overload with infinite capacity.jsimg`: Simulation model for IMS under overload conditions with infinite system capacity.
 - **Optimization Solver**:
   - `gurobi.py`: Python script that uses **[Gurobi Optimizer](https://www.gurobi.com/)** for calculating optimal routing probabilities and handling nonlinear system constraints.
-  - `values.py`: Python script for handling and adjusting simulation values and parameters.
+  - `values.py`: Python script for calculating simulation values and parameters.
 - `README.md`: Provides a comprehensive overview of the project, its objectives, methodologies, and key findings.
 
 ## IMS Architecture

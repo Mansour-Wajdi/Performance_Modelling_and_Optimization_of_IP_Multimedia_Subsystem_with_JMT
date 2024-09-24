@@ -91,6 +91,13 @@ The results revealed key insights into IMS performance:
 - **Message prioritization** was effective in managing signaling loads during normal traffic.
 - Under **overload conditions**, **S-CSCF** was identified as the primary bottleneck, impacting overall system performance.
 
+| CSCF Type | Utilization | Queue Time | Number of Customers |
+|-----------|-------------|------------|---------------------|
+| P-CSCF    | 0.4784      | 0.4503     | 0.9035              |
+| I-CSCF    | 0.1947      | 0.2385     | 0.242               |
+| S-CSCF    | 0.7645      | 4.1508     | 3.358               |
+
+
 ## Conclusion
 
 This project successfully reproduced the IMS performance model proposed in the IEEE paper using **Java Modeling Tools (JMT)**. By simulating different traffic conditions and experimenting with various parameters, the project provided insights into the behavior of IMS under both normal and overload traffic conditions. Further research is needed to refine the model and address its limitations.

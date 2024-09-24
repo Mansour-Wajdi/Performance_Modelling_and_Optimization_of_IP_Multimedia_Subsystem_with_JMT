@@ -80,22 +80,49 @@ During the implementation and experimentation phases, several issues were encoun
 2. Constraints were added to ensure that probabilities remained within the [0, 1] range.
 3. The Gurobi optimizer's objective function was modified to minimize errors resulting from these approximations.
 
-## Simulations and Results
+## Simulations 
 
 The model was evaluated under the following traffic conditions:
 1. **Normal load conditions**, where the system operates within capacity.
 2. **Overload conditions with infinite capacity**, simulating an ideal, unconstrained environment.
 3. **Overload conditions with finite capacity**, where the system's limitations are modeled more realistically.
 
-The results revealed key insights into IMS performance:
-- **Message prioritization** was effective in managing signaling loads during normal traffic.
-- Under **overload conditions**, **S-CSCF** was identified as the primary bottleneck, impacting overall system performance.
+## Results
+**Normal Load**
 
 | CSCF Type | Utilization | Queue Time | Number of Customers |
 |-----------|-------------|------------|---------------------|
 | P-CSCF    | 0.4784      | 0.4503     | 0.9035              |
 | I-CSCF    | 0.1947      | 0.2385     | 0.242               |
 | S-CSCF    | 0.7645      | 4.1508     | 3.358               |
+
+**Overload with infinite capacity**
+
+| CSCF Type      | Number of Customers | Queue Time | Response Time | Residence Time | Utilization | Throughput |
+|----------------|---------------------|------------|---------------|----------------|-------------|------------|
+| P-CSCF         | 4.1601              | 2.0781     | 2.5393        | 5.0335         | 0.7971      | 1.5959     |
+| I-CSCF         | 0.5819              | 0.5853     | 1.5844        | 0.7161         | 0.3659      | 0.3647     |
+| S-CSCF (FCR)   | 1.07E+05            | 0          | 0             | 5.80E+04       | -           | 1.9257     |
+| S-CSCF (queue) | 1.05E+05            | 8.24E+04   | 8.24E+04      | 1.26E+05       | 1           | 0.8018     |
+| S-CSCF (fifo)  | -                   | -          | -             | -              | -           | -          |
+| S-CSCF (pq)    | 269.4105            | 494.1404   | 373.9351      | 372.8225       | 0.9976      | 0.7981     |
+
+
+**Overload with finite capacity**
+
+| CSCF Type      | Number of Customers | Queue Time | Response Time | Residence Time | Utilization | Throughput | Drop  |
+|----------------|---------------------|------------|---------------|----------------|-------------|------------|-------|
+| P-CSCF         | 5.4669              | 2.7359     | 3.2666        | 6.4352         | 0.8482      | 1.6934     |       |
+| I-CSCF         | 0.4891              | 0.491      | 1.4921        | 0.5714         | 0.3272      | 0.3288     |       |
+| S-CSCF (FCR)   | 107.4896            | 0          | 90.1853       | 125.0375       | -           | 1.1898     |       |
+| S-CSCF (queue) | 97.9117             | 120.7711   | 122.0172      | 113.9626       | 1           | 0.802      | 0.3819|
+| S-CSCF (fifo)  | 9.2285              | 12.1807    | 12.8506       | 10.6179        | 0.8918      | 0.7101     |       |
+| S-CSCF (pq)    | 0.1643              | 0.5637     | 1.7925        | 0.1923         | 0.115       | 0.0922     |       |
+
+
+The results revealed key insights into IMS performance:
+- **Message prioritization** was effective in managing signaling loads during normal traffic.
+- Under **overload conditions**, **S-CSCF** was identified as the primary bottleneck, impacting overall system performance.
 
 
 ## Conclusion
